@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='./images/favicon.ico' />
+
+    <title>PDF Splitter</title>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js"></script>
+    <style>
+        /*! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:initial}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:initial;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:initial}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{top:0;right:0;bottom:0;left:0}.bottom-16{bottom:4rem}.right-0{right:0}.mx-auto{margin-left:auto;margin-right:auto}.mb-2{margin-bottom:.5rem}.mt-10{margin-top:2.5rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.hidden{display:none}.h-12{height:3rem}.h-16{height:4rem}.h-8{height:2rem}.h-80{height:20rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-32{width:8rem}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-7xl{max-width:80rem}.max-w-lg{max-width:32rem}.max-w-sm{max-width:24rem}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-evenly{justify-content:space-evenly}.gap-10{gap:2.5rem}.gap-5{gap:1.25rem}.self-center{align-self:center}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-dashed{border-style:dashed}.border-none{border-style:none}.border-blue-600{--tw-border-opacity:1;border-color:rgb(37 99 235/var(--tw-border-opacity))}.border-gray-1{--tw-border-opacity:1;border-color:rgb(131 151 172/var(--tw-border-opacity))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219/var(--tw-border-opacity))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235/var(--tw-bg-opacity))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246/var(--tw-bg-opacity))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235/var(--tw-bg-opacity))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(84 111 255/var(--tw-bg-opacity))}.bg-secondary{--tw-bg-opacity:1;background-color:rgb(35 50 95/var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity))}.bg-white-1{--tw-bg-opacity:1;background-color:rgb(248 249 255/var(--tw-bg-opacity))}.p-2{padding:.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pl-3{padding-left:.75rem}.pl-5{padding-left:1.25rem}.pt-3{padding-top:.75rem}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-secondary{--tw-text-opacity:1;color:rgb(35 50 95/var(--tw-text-opacity))}.text-tertiary{--tw-text-opacity:1;color:rgb(53 68 84/var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity))}.opacity-0{opacity:0}.shadow{--tw-shadow:0 1px 3px 0 #0000001a,0 1px 2px -1px #0000001a;--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color)}.shadow,.shadow-md{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.outline-none{outline:2px solid #0000;outline-offset:2px}*{box-sizing:border-box}
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-between">
+    <div class="flex flex-col">
+        <nav class='w-full max-w-7xl self-center h-16 flex pt-3 pl-3'>
+            <img class="h-8 w-32" width={123} height={32} priority src='./images/nanonets.png' alt='logo' />
+        </nav>
+        <div class="container mx-auto py-8 h-full relative">
+            <h1 class='text-secondary text-3xl font-bold text-center'>
+                PDF splitter
+            </h1>
+            <p class='text-center mt-4 text-base text-tertiary'>
+                Split PDF of the uploaded file
+            </p>
+
+            <div class="mt-10 flex flex-col items-center relative">
+                <div id="upload-dropzone"
+                    class="flex flex-col justify-evenly items-center max-w-4xl h-80 cursor-pointer border-2 border-dashed border-gray-1 bg-white-1 rounded-2xl w-full">
+                    <img src="./images/pdf.svg" alt="">
+                    <p class="text-secondary text-lg font-bold text-center">
+                        <span>Drag and drop or click to upload</span>
+                        <br />
+                        <span>(Supports only PDF format)</span>
+                    </p>
+                    <button id="upload-btn"
+                        class="bg-primary h-12 rounded-md flex justify-center items-center w-fit cursor-pointer px-8 outline-none border-none">
+                        <p class="text-white text-base text-center font-semibold">Upload PDF</p>
+                    </button>
+                    <input class="absolute inset-0 opacity-0 cursor-pointer" id="pdf-input" type="file"
+                        accept="application/pdf" hidden />
+                </div>
+
+                <!-- Extract Pages -->
+                <div id="extract-container" class="hidden relative w-full flex-col gap-10">
+                    <div class="bg-white w-full max-w-lg right-0 p-8 rounded-xl self-center">
+                        <label for="page-input" class="block mb-2 font-medium">Enter page numbers (e.g., 1,
+                            9-15):</label>
+                        <input id="page-input" type="text"
+                            class="w-full max-w-sm p-2 border border-gray-300 rounded-md">
+                    </div>
+                    <!-- The selected pages preview will be added here using JavaScript -->
+                    <div id="preview" class="flex justify-center flex-wrap w-full h-full gap-5">
+                    </div>
+                </div>
+
+                <!-- Download PDF -->
+                <div id="download-container"
+                    class="hidden w-full items-center justify-between bottom-16 max-w-4xl fixed bg-white p-8 rounded-lg shadow-md">
+                    <p class="font-semibold">Your file has been successfully converted!</p>
+                    <button id="download-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Download PDF</button>
+                    <a id="download-link" href="#" download="split_pdf.pdf" class="hidden"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class='w-full flex flex-col h-12 bg-secondary pl-5 pt-3 text-white font-medium'>
+        <span class='w-full max-w-7xl self-center'>
+            Copyright © 2021 Nano Net Technologies Inc.
+        </span>
+    </footer>
+    <script>
+        const pdfInput = document.getElementById('pdf-input');
+        const uploadDropzone = document.getElementById('upload-dropzone');
+        const extractContainer = document.getElementById('extract-container');
+        const downloadContainer = document.getElementById('download-container');
+        const { PDFDocument, StandardFonts, rgb } = PDFLib;
+        let pdfDoc = null,
+            arrayBuffer = null;
+
+        pdfInput.addEventListener('change', async (e) =>
+        {
+            const file = e.target.files[0];
+            if (file)
+            {
+                arrayBuffer = await file.arrayBuffer();
+                pdfDoc = await PDFDocument.load(arrayBuffer);
+                uploadDropzone.classList.add('hidden');
+                extractContainer.classList.remove('hidden');
+                extractContainer.classList.add('flex');
+
+                const pdfjsDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                const pages = Array.from({ length: pdfjsDoc.numPages }, (_, i) => i + 1);
+                renderPages(pdfjsDoc, pages);
+            }
+        });
+
+
+        uploadDropzone.addEventListener('click', (e) =>
+        {
+            pdfInput.click();
+        });
+
+        uploadDropzone.addEventListener('dragover', (e) =>
+        {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadDropzone.classList.add('bg-gray-200');
+        });
+
+        uploadDropzone.addEventListener('dragleave', (e) =>
+        {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadDropzone.classList.remove('bg-gray-200');
+        });
+
+        uploadDropzone.addEventListener('drop', (e) =>
+        {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadDropzone.classList.remove('bg-gray-200');
+            const file = e.dataTransfer.files[0];
+            if (file.type === 'application/pdf')
+            {
+                pdfInput.files = e.dataTransfer.files;
+                pdfInput.dispatchEvent(new Event('change'));
+            }
+        });
+
+        const pageInput = document.getElementById('page-input');
+        const selectedPages = document.getElementById('selected-pages');
+        const previewContainer = document.getElementById('preview');
+
+        async function renderPages(pdfjsDoc, pages, selectedPages = new Set())
+        {
+            previewContainer.innerHTML = '';
+
+            pages = pages.sort((a, b) => a - b);
+
+            for (const pageNum of pages)
+            {
+                const page = await pdfjsDoc.getPage(pageNum);
+                const viewport = page.getViewport({ scale: 0.2 });
+
+                const canvas = document.createElement('canvas');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                const ctx = canvas.getContext('2d');
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport,
+                };
+                await page.render(renderContext).promise;
+
+                const card = document.createElement('div');
+                card.id = 'page-' + pageNum;
+                card.className = 'border p-2 rounded shadow';
+                if (selectedPages.has(pageNum))
+                {
+                    card.classList.add('border-blue-600');
+                } else
+                {
+                    card.classList.add('border-gray-300');
+                }
+
+                card.appendChild(canvas);
+                previewContainer.appendChild(card);
+            }
+        }
+
+        function parseSelectedPages(input)
+        {
+            const pageNumbers = new Set();
+            const parts = input.split(',').map(part => part.trim());
+
+            for (const part of parts)
+            {
+                const range = part.split('-').map(rangePart => rangePart.trim());
+                if (range.length === 1)
+                {
+                    const pageNumber = parseInt(range[0], 10);
+                    if (!isNaN(pageNumber))
+                    {
+                        pageNumbers.add(pageNumber);
+                    }
+                } else if (range.length === 2)
+                {
+                    const start = parseInt(range[0], 10);
+                    const end = parseInt(range[1], 10);
+                    if (!isNaN(start) && !isNaN(end))
+                    {
+                        for (let i = start; i <= end; i++)
+                        {
+                            pageNumbers.add(i);
+                        }
+                    }
+                }
+            }
+
+            return pageNumbers;
+        }
+
+        pageInput.addEventListener('input', async (e) =>
+        {
+            const selectedPages = parseSelectedPages(e.target.value);
+            const pdfjsDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            const pages = Array.from({ length: pdfDoc.getPages().length }, (_, i) => i + 1);
+
+            for (const pageNum of pages)
+            {
+                const card = document.getElementById('page-' + pageNum);
+                if (selectedPages.has(pageNum))
+                {
+                    card.classList.add('border-blue-600');
+                    card.classList.remove('border-gray-300');
+                } else
+                {
+                    card.classList.add('border-gray-300');
+                    card.classList.remove('border-blue-600');
+                }
+            }
+
+            if (selectedPages.size)
+            {
+                downloadContainer.classList.remove('hidden');
+                downloadContainer.classList.add('flex');
+
+            } else
+            {
+                downloadContainer.classList.add('hidden');
+                downloadContainer.classList.remove('flex');
+            }
+        });
+
+        const downloadBtn = document.getElementById('download-btn');
+        const downloadLink = document.getElementById('download-link');
+
+        downloadBtn.addEventListener('click', async () =>
+        {
+            if (!pdfDoc)
+            {
+                alert('Please upload a PDF file first.');
+                return;
+            }
+
+            const pages = parseSelectedPages(pageInput.value, pdfDoc.getPageCount());
+            const newPdfDoc = await PDFDocument.create();
+
+            const copiedPages = [];
+            for (const pageIndex of pages)
+            {
+                const page = await pdfDoc.getPages()[pageIndex - 1];
+                const [copiedPage] = await newPdfDoc.copyPages(pdfDoc, [pageIndex - 1]);
+                newPdfDoc.addPage(copiedPage);
+            }
+
+            const pdfBytes = await newPdfDoc.save();
+            const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            downloadLink.href = pdfUrl;
+            downloadLink.download = 'splitted_pdf.pdf';
+            downloadLink.click();
+
+            window.location.reload();
+        });
+
+    </script>
+</body>
+</html>
